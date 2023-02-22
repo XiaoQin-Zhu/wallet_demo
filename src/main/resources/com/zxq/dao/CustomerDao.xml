@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+<mapper namespace="com.zxq.dao.CustomerDao">
+	<!--查询账户余额-->
+	<select id="queryAmount" parameterType="int" resultType="double">
+		select cust_amount from cust_info where cust_id = #{id}
+	</select>
+
+	<!--用户消费,扣减余额-->
+	<update id="deductionAmount" parameterType="map">
+		update cust_info set cust_amount = #{amount} where cust_id = #{id}
+	</update>
+
+	<!--用户退款,增加余额-->
+	<update id="deductionAmount" parameterType="map">
+		update cust_info set cust_amount = #{amount} where cust_id = #{id}
+	</update>
+
+	<!--查询账单表-->
+	<select id="queryBill" parameterType="int" resultType="com.zxq.pojo.Bill">
+		select * from cust_bill order by add_time desc
+	</select>
+</mapper>
